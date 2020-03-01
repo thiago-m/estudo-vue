@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue</title>
+    
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+</head>
+<body>
+
+    <div id="app">
+        <p> {{ mensagem }} </p>
+        <hr>
+        <p> Meu nome é: {{ nome }} </p>
+        <!-- Atalho para v-on: => @ -->
+        <!-- 
+            :value => coloca o valor de nome dentro do input
+            @keyup.enter => chama a function mudarNome sempre que digitar 'Enter'
+        -->
+        <input @keyup.enter="mudarNome" :value="nome">
+        <hr>
+        <!-- coloca o valor nome dentro do input e sempre q digita o inputt o altera -->
+        <p> Meu nome é: {{ nome }} </p>
+        <input v-model="nome">
+        <hr>
+        <p>
+            <!-- Atalho para v-bind: => : -->
+            <a :href="vue"> Vue </a>
+        </p>
+        <hr>
+        <p> Instrutor <span v-text="instrutor"></span> </p>
+        <hr>
+        <p>{{html}}</p>
+        <p v-html="html"></p>
+        <hr>
+        <!-- Atalho para v-on => @ -->
+        <button v-on:click="incrementar"> clique </button>
+        <p>Botão clicado {{ cliques }} vezes</p>
+        <hr>
+        <!-- Atalho para v-on => @ -->
+        <p v-on:mousemove="atualizandoCoordenadas">
+            Coordenadas X: {{ x }}
+            e Y: {{ y }}
+        </p>
+        <hr>
+        <!-- 
+            Passando argumentos
+            Só exibe o blur quando o input perde o foco
+        -->
+        <!-- Atalho para v-on => @ -->
+        <input v-on:blur="exibirBlur('Meu Text é: ', $event)"> {{ blur }}
+        <hr>
+        <!-- Trabalhando com Computer Properties -->
+        <p> {{ mensagem }} => {{ mensagem.split('').reverse().join('') }} </p>
+        <p> {{ mensagem }} => {{ mensagemInvertida }} </p>
+    </div>
+    
+    
+    <script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data: {
+                mensagem: 'Olá VueJS',
+                nome: 'Thiago Marciel',
+                vue: 'https://vuejs.org',
+                instrutor: 'Plínio Naves',
+                html: 'text <span style="color:red">red</span>',
+                cliques: 0,
+                x: 0,
+                y: 0,
+                blur: ''
+            },
+            methods: {
+                mudarNome: function (event)  {
+                    this.nome = event.target.value;
+                },
+                incrementar: function(){
+                    this.cliques++;
+                },
+                atualizandoCoordenadas: function(event) {
+                    this.x = event.clientX;
+                    this.y = event.clientY;
+                },
+                exibirBlur: function(text, event){
+                    this.blur = text + event.target.value;
+                }
+            },
+            computed: {
+                mensagemInvertida: function() {
+                    return this.mensagem.split('').reverse().join('');
+                }
+            }
+        })
+    </script>
+</body>
+</html>

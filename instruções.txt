@@ -1,0 +1,17 @@
+CRIAR PROJETO VUE CLI:
+ --> vue create <nome-projeto>
+
+RODAR PROJETO VUE CLI:
+ --> npm run serve
+
+RODAR PROJETO VUE CLI E ABRIR NO NAVEGADOR:
+ --> npm run serve -- --open
+
+CORRIGIR ERROS COM VUE CLI LINT:
+ --> npm run lint
+
+ABRIR INTERFACE GRAFICA VUE CLI:
+ --> vue ui
+
+CRIANDO PROJETO COM VUE INIT *não recomendado:
+ --> vue init <template> <nome-projeto>

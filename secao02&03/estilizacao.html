@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Estilização css com vue</title>
+    
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+
+    <style type="text/css">
+        .caixa{
+            width: 100px;
+            height: 100px;
+            background-color: #aaa;
+        }
+        .coral{
+            background-color: lightcoral;
+        }
+        .azul{
+            background-color: lightblue;
+        }
+        .verde{
+            background-color: lightgreen;
+        }
+        .vermelho{
+            background-color: red;
+        }
+        .circulo{
+            border-radius: 100%;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <div id="app">
+        <div 
+            class="caixa" 
+            :class="{coral: ativeClass}" 
+            @click="ativeClass = !ativeClass">
+        </div>
+        <hr>
+        <div 
+            class="caixa"
+            :class="nomeClass">
+        </div>
+        <input v-model="nomeClass">
+    </div>
+
+    <script type="text/javascript" aria-placeholder="Nome da classe CSS">
+        new Vue({
+            el: '#app',
+            data: {
+                ativeClass: false,
+                nomeClass: ''
+            }
+        });
+    </script>
+</body>
+</html>
